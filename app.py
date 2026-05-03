@@ -49,6 +49,14 @@ if st.button("Deploy Sentinel"):
                 st.markdown("---")
                 st.markdown(result.raw)
 
+                # --- THE NEW EXPORT FEATURE ---
+                st.download_button(
+                    label="📥 Download Report (.md)",
+                    data=result.raw,
+                    file_name=f"{target_stock}_Sentinel_Report.md",
+                    mime="text/markdown"
+                )
+
             except Exception as e:
                 st.error(f"System halted. Error: {e}")
                 st.warning("Ensure your API key is valid and you haven't hit your rate limits.")
