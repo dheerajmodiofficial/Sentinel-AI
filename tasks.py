@@ -18,10 +18,10 @@ analyze_data_task = Task(
         "Read the raw data provided by the Data Harvester for {ticker}. "
         "Write a concise analysis of the financial health and market momentum. "
         "CONSTRAINT 1: You MUST explicitly mention the P/E ratio and Current Price. "
-        "CONSTRAINT 2: You MUST extract at least one specific catalyst from the news. "
-        "If no news is relevant, state 'No actionable news catalysts found.' Do not invent narrative."
+        "CONSTRAINT 2: You MUST extract at least one specific catalyst from the news. If no news is relevant, state 'No actionable news catalysts found.' "
+        "CONSTRAINT 3: DO NOT attempt to calculate percentages or mathematical variances (e.g., how far the price is from the 52-week high). Only state the exact raw numbers."
     ),
-    expected_output="A 3-paragraph analytical draft detailing bullish and bearish signals.",
+    expected_output="A 3-paragraph analytical draft detailing bullish and bearish signals using strict raw data.",
     agent=equity_analyst,
 )
 
@@ -31,8 +31,8 @@ risk_review_task = Task(
         "Review the Equity Analyst's draft for {ticker}. "
         "Format a final Investment Memo in Markdown. "
         "Sections: 1. Executive Summary 2. Bull Case 3. Bear Case / Risks 4. Final Verdict (Buy/Hold/Sell). "
-        "CRITICAL INSTRUCTION: You must include direct quotes or specific data points from the news in your Bull/Bear cases. "
-        "Do NOT use phrases like 'investors are closely monitoring'. Be specific, data-driven, and ruthless."
+        "CRITICAL INSTRUCTION 1: You must include direct quotes or specific data points from the news in your Bull/Bear cases. "
+        "CRITICAL INSTRUCTION 2: Do NOT perform any math or percentage calculations. State raw data only."
     ),
     expected_output="A highly professional, formatted Markdown investment memo.",
     agent=risk_manager,
