@@ -4,3 +4,5 @@ crewai[tools]
 litellm
 yfinance
 duckduckgo-search
+crewai>=0.86.0
+litellm>=1.52.0
