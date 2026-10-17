@@ -3,7 +3,9 @@ from crewai import Crew, Process
 from agents import data_harvester, equity_analyst, risk_manager
 from tasks import fetch_data_task, analyze_data_task, risk_review_task
 import os
+import litellm
 
+litellm.drop_params = True
 # Page Config
 st.set_page_config(page_title="Sentinel AI", page_icon="🛡️", layout="centered")
 
